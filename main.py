@@ -4,15 +4,26 @@
 import os
 import sys
 import numpy as np
-from debug_package import debug, info, warning, error, critical
+from sklearn import preprocessing        # data prep
+
+
+################## my packages
+from plot import plot   
 import xml_parser
 import estimators
-from plot import plot   
-from sklearn import preprocessing
+from debug_package import debug, info, warning, error, critical
 
+
+
+OPTIMIZE_MODELS    = True
+#OPTIMIZE_MODELS    = False
+
+
+
+#COMPATIBLE_EXTENSIONS = ["xml", "pdf", "txt", "csv"]
 COMPATIBLE_EXTENSIONS = ["xml"]
 
-
+### for CSV export of ypred
 ypred_names = [
 "entry_2;", 
 "entry_16;", 
@@ -37,8 +48,6 @@ ypred_names = [
 "entry_202;", 
 "entry_205;" ] 
 
-
-   
 #print("System arguments are:", sys.argv)
 
 if len(sys.argv) < 2:
@@ -78,7 +87,7 @@ if sys.argv[0] == "main.py": # a normal Python call?
     #print(XtrainMinMax)
     #print(XtestMinMax)
 
-    model = estimators.getWinner(XtrainMinMax, ytrain, test_size=20)  # best model and print plots
+    model = estimators.getWinner(XtrainMinMax, ytrain, 20, OPTIMIZE_MODELS)  # best model and print plots
     model = estimators.updateModel(model, XtrainMinMax, ytrain)   # fit model again and print plot
 
 
