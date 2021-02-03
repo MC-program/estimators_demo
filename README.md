@@ -1,21 +1,19 @@
 # estimators_demo
 
 This is a demo of several estimators. The main module runs a list of them, the winner
-will be selected and fed the entire dataset to fit the data well.
-Then the validation set can be used to predict unseen output data.
-This data is saved under validation_prediction.csv.
-A plot to each model is exported to plot.pdf.
+will be selected and and the prediction based on the *validation* set (unlabeled) is export as CSV.
 
 ### Start with:
 Python main.py training.xml validation.xml
 
-training.xml n-dimensional data set for training of models (labeled).
+*training.xml* n-dimensional data set for training of models (labeled).
 
-validation.xml 1-dimensional target values (co-domain) for just export (unlabeled).
+*validation.xml* 1-dimensional target values (co-domain) for just export (unlabeled).
 
-As further parameter, set OPTIMIZE_MODELS = True to perform full parameter search each call of main.py 
+Set OPTIMIZE_MODELS = True in main.py to perform hyper parameter search each call of main.py 
 
 ### Export files are the following
+A plot to each model is exported to plot.pdf.
 
 Visualization:
 https://github.com/MC-program/estimators_demo/blob/master/plot.pdf
@@ -25,6 +23,9 @@ CAUTION: Even each page get a single plot, there are flaws on some pages!
 But I got 100s warnings from matplotlib.font_manager (findfont()) on my system. You might be able to generate it without problems on another system.
 
 https://github.com/MC-program/estimators_demo/blob/master/validation_prediction.csv
+
+Estimated values with respect to *validation.xml* in CSV format.
+
 
 ### Comments 
 There are 6 different models, see estimators.py: 
